@@ -102,3 +102,92 @@ Hello World
 
 - **Program Execution Flow**
     - The JVM locates the `main` method, executes statements in sequence, prints `Hello World`, and then exits.
+
+---
+
+## UC2: Display "Hello" with Command-Line Argument
+
+### Description
+The app accepts a user's name as a command-line argument and displays a personalized greeting. This enhances the basic functionality of UC1 by allowing user input to customize the output.
+
+### Disadvantages of Previous Use Case
+UC1 is limited because it only displays a static message. To make the application more interactive and useful, it should accept user input and personalize the output based on that input.
+
+### Preconditions
+- App is launched with a command-line argument containing a name.
+
+### Main Flow
+1. User runs the application with a name argument: `java HelloApp John`.
+2. App reads the name from the `args[0]` parameter.
+3. App displays `Hello, John!` to the console.
+4. App terminates.
+
+### Post Conditions
+- Personalized greeting is displayed based on the command-line argument provided.
+
+### Hints
+- Command-line arguments are passed to the `main` method as the `String[] args` parameter.
+- Access the first argument using `args[0]`.
+- Check if arguments exist before accessing them to avoid `ArrayIndexOutOfBoundsException`.
+- Use string concatenation with the `+` operator to combine strings.
+- Test with different names to verify the output.
+
+### Code Snippet Example
+```java
+package com.helloapp;
+
+public class HelloApp {
+        public static void main(String[] args) {
+                if (args.length > 0) {
+                        System.out.println("Hello, " + args[0] + "!");
+                } else {
+                        System.out.println("Hello, World!");
+                }
+        }
+}
+```
+
+### Example Output
+
+Input: `java HelloApp Alice`  
+Output: `Hello, Alice!`
+
+```text
+Hello, Alice!
+```
+
+Input: `java HelloApp`  
+Output: `Hello, World!`
+
+```text
+Hello, World!
+```
+
+### Concepts Learned
+- **Command-Line Arguments**
+    - Parameters passed to the program at runtime.
+    - Accessible via the `args` array in `main`.
+
+- **Array Length**
+    - `args.length` returns how many arguments were provided.
+    - Checking length prevents runtime errors.
+
+- **Array Indexing**
+    - Java arrays are zero-indexed.
+    - First argument is `args[0]`.
+
+- **String Concatenation**
+    - The `+` operator combines strings.
+    - Example: `"Hello, " + name + "!"`.
+
+- **Conditional Logic**
+    - `if-else` chooses behavior based on whether an argument exists.
+
+- **Error Prevention**
+    - Guarding array access prevents `ArrayIndexOutOfBoundsException`.
+
+- **Default Values**
+    - Fallback output (`Hello, World!`) keeps behavior predictable when no argument is provided.
+
+- **Array Handling**
+    - Accessing and validating array data is foundational for input-driven programs.
