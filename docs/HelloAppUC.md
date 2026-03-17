@@ -22,31 +22,28 @@ This document tracks the Hello App use case roadmap and implementation notes.
 ## UC1: Display "Hello World"
 
 ### Description
-UC1 introduces the first executable version of Hello App. The application prints a fixed greeting, `Hello World`, to the console. This validates that the Java/Maven project is correctly configured and runnable.
+The app displays `Hello World` on the console when executed. This is the most basic use case to demonstrate a simple Java application that outputs text to the console.
 
 ### Disadvantages of Previous Use Case (if any)
 Not applicable. UC1 is the first use case, so no previous behavior exists.
 
 ### Preconditions
-- Java JDK is installed and available.
-- Maven is installed and available.
-- Project contains a valid `pom.xml`.
-- Source file exists at `src/main/java/com/helloapp/HelloApp.java`.
+- App is launched.
 
 ### Main Flow
 1. User runs the application.
-2. JVM executes the `main` method in `HelloApp`.
-3. Application prints `Hello World` to standard output.
-4. Program exits successfully.
+2. App executes the `main` method.
+3. App prints `Hello World` to the console.
+4. App terminates.
 
 ### Post Conditions
-- Greeting is shown in console output.
-- Build and run pipeline is validated for future use cases.
+- Message is displayed to user.
 
 ### Hints
-- Keep UC1 minimal; no input handling is needed.
-- Use `System.out.println` for a simple console message.
-- Verify with Maven before moving to UC2.
+- Create a public class named `HelloApp`.
+- Define a `main()` method with String array parameter.
+- Use `System.out.println()` to print to console.
+- The program executes and terminates immediately.
 
 ### Code Snippet Example
 ```java
@@ -61,12 +58,47 @@ public class HelloApp {
 
 ### Run Commands
 ```bash
-mvn clean install
-java -cp target/classes com.helloapp.HelloApp
+mvn compile
+mvn exec:java
+mvn exec:java -Dexec.mainClass="com.helloapp.HelloApp"
+```
+
+### Example Output
+
+Input: Run the program  
+Output: `Hello World`
+
+```text
+Hello World
 ```
 
 ### Concepts Learned
-- Java class and `main` method entry point
-- Console output using `System.out.println`
-- Maven lifecycle basics (`clean`, `install`)
-- Project structure under `src/main/java`
+- **Class Declaration**
+    - Defines a blueprint for objects. In this case, `HelloApp` is the class that contains the `main` method.
+    - Every Java application must have at least one `public` class containing `public static void main(String[] args)` as the entry point.
+    - The public class name must match the file name (`HelloApp.java`).
+    - Java class naming convention is PascalCase.
+
+- **Main Method**
+    - The main method is the entry point for execution: `public static void main(String[] args)`.
+
+- **Public Access Modifier**
+    - `public` allows the JVM to access and invoke `main` when the program starts.
+
+- **Static Keyword**
+    - `static` means the method belongs to the class, so the JVM can call it without creating an object first.
+
+- **Void Return Type**
+    - `void` indicates the method does not return a value to the JVM.
+
+- **String Array Parameter**
+    - `String[] args` stores command-line arguments. UC1 does not use them yet, but they are part of the standard signature.
+
+- **System.out.println()**
+    - Standard way to print output to the console.
+    - `System` is a class in `java.lang`.
+    - `out` is the standard output stream.
+    - `println` prints the message followed by a newline.
+
+- **Program Execution Flow**
+    - The JVM locates the `main` method, executes statements in sequence, prints `Hello World`, and then exits.
