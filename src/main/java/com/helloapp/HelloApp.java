@@ -2,23 +2,18 @@ package com.helloapp;
 
 public class HelloApp {
     public static void main(String[] args) {
-        String names;
+        String names = "World";
 
-        if (args.length == 0) {
-            names = "World";
-        } else {
+        if (args.length > 0) {
             StringBuilder namesBuilder = new StringBuilder();
-            boolean isFirst = true;
 
             for (String name : args) {
-                if (!isFirst) {
-                    namesBuilder.append(", ");
-                }
-                namesBuilder.append(name);
-                isFirst = false;
+                namesBuilder.append(name).append(", ");
             }
 
-            names = namesBuilder.toString();
+            if (namesBuilder.length() > 0) {
+                names = namesBuilder.substring(0, namesBuilder.length() - 2);
+            }
         }
 
         System.out.println("Hello, " + names + "!");
