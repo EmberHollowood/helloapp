@@ -26,6 +26,10 @@ Hello App begins with a simple console greeting and incrementally evolves into a
 ```bash
 mvn clean install
 java -cp target/classes com.helloapp.HelloApp
+
+# UC3 via Maven Exec Plugin
+mvn exec:java "-Dexec.mainClass=com.helloapp.HelloApp"
+mvn exec:java "-Dexec.mainClass=com.helloapp.HelloApp" "-Dexec.args=Alice"
 ```
 
 ## Documentation
